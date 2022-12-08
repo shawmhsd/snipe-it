@@ -134,6 +134,11 @@ $qr_size = ($settings->alt_barcode_enabled=='1') && ($settings->alt_barcode!='')
                     C: {{ $asset->company->name }}
                 </div>
             @endif
+            @if (($asset->assigned_to!=' ') && ($asset->assigned_type=='App\Models\User'))
+                <div class="pull-left">
+                     A: {{ $asset->assignedto->first_name }} {{ $asset->assignedto->last_name }}
+                </div>
+            @endif
             @if (($settings->labels_display_name=='1') && ($asset->name!=''))
                 <div class="pull-left">
                     N: {{ $asset->name }}
